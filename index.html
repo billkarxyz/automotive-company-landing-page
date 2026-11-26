@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALL NEW YARIS CROSS HEV — Toyota</title>
+<style>
+  :root{
+    --red:#eb0a1e; --red-dark:#c00818; --dark:#111; --grey:#666;
+    --light:#f5f5f5; --line:#e5e5e5; --gold:#f5b301;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',Arial,Helvetica,sans-serif;color:#222;background:#fff;line-height:1.6}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+  /* ---------- NAV ---------- */
+  header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;gap:28px;height:64px}
+  .logo{font-weight:800;font-size:20px;letter-spacing:1px}
+  .logo span{color:var(--red)}
+  nav ul{list-style:none;display:flex;gap:24px;margin-left:auto}
+  nav ul a{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+  nav ul a:hover{color:var(--red)}
+  .nav-cta{background:var(--red);color:#fff;border:none;padding:10px 20px;border-radius:24px;font-weight:700;cursor:pointer;font-size:14px}
+  .nav-cta:hover{background:var(--red-dark)}
+  /* ---------- HERO ---------- */
+  .hero{position:relative;background:#1a1a1a;color:#fff;min-height:520px;display:flex;align-items:flex-end}
+  .hero img.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.55) 60%,rgba(0,0,0,.85) 100%)}
+  .hero-inner{position:relative;z-index:2;padding:60px 20px 48px;width:100%;max-width:1200px;margin:0 auto}
+  .hero-inner .kicker{letter-spacing:3px;font-size:13px;font-weight:700;color:#ffd7da;text-transform:uppercase}
+  .hero-inner h1{font-size:clamp(34px,6vw,64px);line-height:1.05;font-weight:800;margin:10px 0 12px}
+  .hero-inner p.sub{font-size:18px;max-width:640px;color:#eee}
+  .price{margin:18px 0 6px;font-size:16px}
+  .price b{font-size:22px;color:#fff}
+  .price small{display:block;color:#ccc;font-size:13px;margin-top:4px}
+  .btn{display:inline-block;background:var(--red);color:#fff;padding:14px 36px;border-radius:30px;font-weight:800;font-size:16px;border:none;cursor:pointer;letter-spacing:1px;margin-top:14px}
+  .btn:hover{background:var(--red-dark)}
+  /* ---------- STAT STRIP ---------- */
+  .stats{background:var(--dark);color:#fff}
+  .stats .wrap{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;padding:28px 20px;gap:12px}
+  .stats b{display:block;font-size:32px}
+  .stats span{font-size:13px;color:#bbb;text-transform:uppercase;letter-spacing:1px}
+  /* ---------- SECTIONS ---------- */
+  section{padding:64px 0}
+  section h2{font-size:30px;font-weight:800;margin-bottom:8px}
+  section .lead{color:var(--grey);margin-bottom:28px;max-width:720px}
+  .alt{background:var(--light)}
+  /* ---------- SPECS TABS ---------- */
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+  .tabs button{padding:10px 18px;border:1px solid var(--line);background:#fff;border-radius:24px;cursor:pointer;font-weight:600;font-size:14px}
+  .tabs button.active{background:var(--dark);color:#fff;border-color:var(--dark)}
+  .spec-panel{display:none;background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px}
+  .spec-panel.active{display:block}
+  .spec-panel table{width:100%;border-collapse:collapse}
+  .spec-panel td{padding:10px 8px;border-bottom:1px solid var(--line);font-size:15px}
+  .spec-panel td:first-child{color:var(--grey);width:45%}
+  .spec-panel tr:last-child td{border-bottom:none}
+  /* ---------- TECHNOLOGY ---------- */
+  .tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .tech-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .tech-card .ph{height:180px;background:#2b2f36}
+  .tech-card .ph img{width:100%;height:100%;object-fit:cover}
+  .tech-card .body{padding:20px}
+  .tech-card h3{font-size:18px;margin-bottom:8px}
+  .tech-card p{font-size:14px;color:var(--grey)}
+  /* ---------- VARIANTS ---------- */
+  .var-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .var-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;cursor:pointer;transition:.15s}
+  .var-card:hover{border-color:var(--red)}
+  .var-card.selected{border:2px solid var(--red);box-shadow:0 4px 16px rgba(235,10,30,.15)}
+  .var-card h3{font-size:17px;margin-bottom:6px}
+  .var-card .price-tag{font-size:20px;font-weight:800;color:var(--red)}
+  .var-card .tag{display:inline-block;font-size:11px;background:#fff3cd;color:#7a5b00;border-radius:10px;padding:2px 8px;margin-top:8px}
+  .var-card p{font-size:13px;color:var(--grey);margin-top:6px}
+  .disc{font-size:13px;color:var(--grey);margin-top:16px}
+  /* ---------- SIMULASI KREDIT ---------- */
+  .sim-box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
+  .field input[type=number],.field input[type=text],.field input[type=tel],.field select{width:100%;padding:11px 12px;border:1px solid #ccc;border-radius:8px;font-size:15px;font-family:inherit}
+  .field input[type=range]{width:100%}
+  .field .val{font-weight:700;color:var(--red)}
+  .sim-result{background:var(--light);border-radius:10px;padding:22px}
+  .sim-result .row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:15px}
+  .sim-result .row:last-child{border-bottom:none}
+  .sim-result .big{font-size:28px;font-weight:800;color:var(--red)}
+  /* ---------- ORDER ---------- */
+  .order-box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;max-width:640px}
+  .summary{display:none;background:#eef7ee;border:1px solid #b7dfb7;border-radius:10px;padding:20px;margin-top:20px;white-space:pre-line;font-size:15px}
+  .summary.show{display:block}
+  .btn-ghost{background:#fff;color:var(--dark);border:1px solid #ccc;padding:11px 22px;border-radius:24px;font-weight:700;cursor:pointer;font-size:14px;margin-top:12px}
+  .btn-ghost:hover{border-color:var(--dark)}
+  /* ---------- GALLERY ---------- */
+  .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .gal-grid .ph{height:220px;border-radius:12px;overflow:hidden;background:#2b2f36;cursor:pointer}
+  .gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+  .gal-grid .ph:hover img{transform:scale(1.05)}
+  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;z-index:100;cursor:pointer}
+  .lightbox.show{display:flex}
+  .lightbox img{max-width:92%;max-height:88vh;border-radius:8px}
+  .lightbox .close{position:absolute;top:20px;right:28px;color:#fff;font-size:36px;font-weight:700}
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--dark);color:#bbb;padding:36px 0;font-size:13px}
+  footer b{color:#fff}
+  @media(max-width:820px){
+    .tech-grid,.var-grid,.gal-grid{grid-template-columns:1fr 1fr}
+    .sim-box{grid-template-columns:1fr}
+    nav ul{display:none}
+  }
+  @media(max-width:520px){
+    .tech-grid,.var-grid,.gal-grid{grid-template-columns:1fr}
+    .stats .wrap{grid-template-columns:1fr}
+    .stats b{font-size:26px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="logo" href="#">TOYOTA<span> • YARIS</span></a>
+    <ul>
+      <li><a href="#specifications">Specifications</a></li>
+      <li><a href="#hero">Yaris</a></li>
+      <li><a href="#technology">Technology</a></li>
+    </ul>
+    <button class="nav-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order</button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero" style="padding:0">
+  <img class="hero-img" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1800&q=80" alt="All New Yaris Cross HEV" onerror="this.style.display='none'">
+  <div class="hero-inner">
+    <div class="kicker">Toyota • Hybrid EV</div>
+    <h1>ALL NEW<br>YARIS CROSS HEV</h1>
+    <p class="sub">SUV kompak hybrid dengan efisiensi bahan bakar luar biasa, desain berani, dan teknologi keselamatan Toyota Safety Sense.</p>
+    <div class="price">
+      Harga mulai <b>Rp359.700.000</b>
+      <small>Varian hero: 1.5 S HV CVT TSS — Rp448.800.000 (OTR Jakarta)</small>
+    </div>
+    <button class="btn" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER</button>
+  </div>
+</section>
+
+<!-- STAT STRIP -->
+<div class="stats">
+  <div class="wrap">
+    <div><b>116 PS</b><span>Tenaga Maksimum</span></div>
+    <div><b>31 km/L</b><span>Konsumsi BBM</span></div>
+    <div><b>210 mm</b><span>Ground Clearance</span></div>
+  </div>
+</div>
+
+<!-- SPECIFICATIONS -->
+<section id="specifications">
+  <div class="wrap">
+    <h2>Specifications</h2>
+    <p class="lead">Spesifikasi utama All New Yaris Cross HEV. Angka dapat berbeda tergantung varian dan kondisi pengujian.</p>
+    <div class="tabs" role="tablist">
+      <button class="active" data-tab="mesin" onclick="showTab('mesin',this)">Mesin &amp; Performa</button>
+      <button data-tab="dimensi" onclick="showTab('dimensi',this)">Dimensi &amp; Kapasitas</button>
+      <button data-tab="fitur" onclick="showTab('fitur',this)">Fitur &amp; Keselamatan</button>
+    </div>
+    <div class="spec-panel active" id="tab-mesin">
+      <table>
+        <tr><td>Tipe Mesin</td><td>2NR-VEX 1.5L, 4-silinder, Dual VVT-i + Motor Listrik (Hybrid)</td></tr>
+        <tr><td>Tenaga Maksimum (gabungan)</td><td>116 PS</td></tr>
+        <tr><td>Torsi Maksimum Mesin</td><td>121 Nm</td></tr>
+        <tr><td>Transmisi</td><td>CVT (e-CVT Hybrid)</td></tr>
+        <tr><td>Konsumsi BBM</td><td>± 31 km/L (klaim pabrikan, tergantung kondisi berkendara)</td></tr>
+        <tr><td>Baterai Hybrid</td><td>Lithium-ion</td></tr>
+        <tr><td>Sistem Penggerak</td><td>Front-Wheel Drive (FWD)</td></tr>
+      </table>
+    </div>
+    <div class="spec-panel" id="tab-dimensi">
+      <table>
+        <tr><td>Panjang × Lebar × Tinggi</td><td>4.310 × 1.770 × 1.615 mm</td></tr>
+        <tr><td>Jarak Sumbu Roda (Wheelbase)</td><td>2.620 mm</td></tr>
+        <tr><td>Ground Clearance</td><td>210 mm</td></tr>
+        <tr><td>Kapasitas Tempat Duduk</td><td>5 penumpang</td></tr>
+        <tr><td>Kapasitas Bagasi</td><td>± 471 liter</td></tr>
+        <tr><td>Kapasitas Tangki BBM</td><td>36 liter</td></tr>
+        <tr><td>Ukuran Ban</td><td>215/55 R18 (tergantung varian)</td></tr>
+      </table>
+    </div>
+    <div class="spec-panel" id="tab-fitur">
+      <table>
+        <tr><td>Toyota Safety Sense (TSS)</td><td>Pre-Collision System, Lane Departure Alert, Adaptive Cruise Control, Automatic High Beam (varian TSS)</td></tr>
+        <tr><td>Airbag</td><td>6 airbag (tergantung varian)</td></tr>
+        <tr><td>Kamera</td><td>Panoramic View Monitor 360° (varian tertentu)</td></tr>
+        <tr><td>Head Unit</td><td>Layar sentuh 10,1 inci, Apple CarPlay &amp; Android Auto</td></tr>
+        <tr><td>Pengisian Daya</td><td>Wireless charger (varian tertentu)</td></tr>
+        <tr><td>Lampu</td><td>LED dengan Daytime Running Light</td></tr>
+        <tr><td>Atap</td><td>Panoramic roof (varian tertentu)</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section id="technology" class="alt">
+  <div class="wrap">
+    <h2>Technology</h2>
+    <p class="lead">Teknologi hybrid dan keselamatan terbaru dari Toyota.</p>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=900&q=80" alt="Hybrid EV System" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="body">
+          <h3>Hybrid EV System</h3>
+          <p>Mesin bensin 1.5L dipadukan dengan motor listrik untuk efisiensi hingga 31 km/L, akselerasi halus, dan mode berkendara listrik di kecepatan rendah.</p>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=900&q=80" alt="Toyota Safety Sense" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="body">
+          <h3>Toyota Safety Sense</h3>
+          <p>Paket keselamatan aktif: pengereman darurat otomatis, peringatan keluar jalur, cruise control adaptif, dan lampu jauh otomatis.</p>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=900&q=80" alt="Panoramic View Monitor" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="body">
+          <h3>Panoramic View Monitor</h3>
+          <p>Kamera 360° yang menampilkan sekeliling mobil di layar head unit, memudahkan parkir dan manuver di ruang sempit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTS -->
+<section id="variants">
+  <div class="wrap">
+    <h2>Varian &amp; Harga</h2>
+    <p class="lead">Pilih varian. Harga OTR Jakarta — klik kartu untuk memilih varian pada simulasi kredit dan formulir pemesanan.</p>
+    <div class="var-grid" id="variantGrid"></div>
+    <p class="disc">* Harga varian 1.5 G HV CVT, 1.5 S HV CVT, dan 1.5 S HV CVT TSS merujuk pada daftar harga publik terkini. Varian bertanda “Contoh” adalah harga contoh (sample) untuk keperluan demo halaman ini, bukan harga resmi dealer. Harga dapat berubah sewaktu-waktu; konfirmasi ke dealer resmi Toyota.</p>
+  </div>
+</section>
+
+<!-- SIMULASI KREDIT -->
+<section id="simulasi" class="alt">
+  <div class="wrap">
+    <h2>Simulasi Kredit</h2>
+    <p class="lead">Hitung estimasi angsuran bulanan. Perhitungan memakai bunga flat per tahun: angsuran = (pokok + pokok × bunga × tahun) ÷ bulan.</p>
+    <div class="sim-box">
+      <div>
+        <div class="field">
+          <label for="simVariant">Varian</label>
+          <select id="simVariant"></select>
+        </div>
+        <div class="field">
+          <label>Uang Muka (DP): <span class="val" id="dpLabel">30%</span></label>
+          <input type="range" id="simDp" min="10" max="70" step="5" value="30">
+        </div>
+        <div class="field">
+          <label for="simTenor">Tenor (bulan)</label>
+          <select id="simTenor">
+            <option value="12">12 bulan</option>
+            <option value="24">24 bulan</option>
+            <option value="36">36 bulan</option>
+            <option value="48">48 bulan</option>
+            <option value="60" selected>60 bulan</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Bunga flat: <span class="val" id="rateLabel">5% / tahun</span></label>
+          <input type="range" id="simRate" min="0" max="12" step="0.5" value="5">
+        </div>
+      </div>
+      <div class="sim-result">
+        <div class="row"><span>Harga OTR</span><b id="rPrice">—</b></div>
+        <div class="row"><span>Uang Muka (DP)</span><b id="rDp">—</b></div>
+        <div class="row"><span>Pokok Kredit</span><b id="rLoan">—</b></div>
+        <div class="row"><span>Total Bunga</span><b id="rInterest">—</b></div>
+        <div class="row"><span>Tenor</span><b id="rTenor">—</b></div>
+        <div style="margin-top:14px;font-size:14px;color:var(--grey)">Estimasi Angsuran / Bulan</div>
+        <div class="big" id="rMonthly">—</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section id="order">
+  <div class="wrap">
+    <h2>Pemesanan</h2>
+    <p class="lead">Isi formulir di bawah ini. Ringkasan pemesanan akan tampil dan dapat disalin.</p>
+    <div class="order-box">
+      <form id="orderForm" onsubmit="return submitOrder(event)">
+        <div class="field">
+          <label for="fName">Nama Lengkap</label>
+          <input type="text" id="fName" placeholder="Nama Anda" required>
+        </div>
+        <div class="field">
+          <label for="fPhone">No. Telepon / WhatsApp</label>
+          <input type="tel" id="fPhone" placeholder="08xxxxxxxxxx" required>
+        </div>
+        <div class="field">
+          <label for="fVariant">Varian</label>
+          <select id="fVariant"></select>
+        </div>
+        <div class="field">
+          <label for="fCity">Kota</label>
+          <input type="text" id="fCity" placeholder="Contoh: Jakarta" required>
+        </div>
+        <button class="btn" type="submit">BUAT RINGKASAN PESANAN</button>
+      </form>
+      <div class="summary" id="orderSummary"></div>
+      <button class="btn-ghost" id="copyBtn" style="display:none" onclick="copySummary()">Salin Ringkasan</button>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="alt">
+  <div class="wrap">
+    <h2>Galeri</h2>
+    <p class="lead">Klik foto untuk memperbesar.</p>
+    <div class="gal-grid" id="galGrid"></div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="close">&times;</span>
+  <img id="lightboxImg" src="" alt="Foto diperbesar">
+</div>
+
+<footer>
+  <div class="wrap">
+    <b>ALL NEW YARIS CROSS HEV</b> — Landing page demo (statis, tanpa backend).<br>
+    Harga yang tercantum adalah harga contoh / merujuk daftar harga publik dan dapat berubah sewaktu-waktu. Bukan situs resmi Toyota maupun dealer. Tidak ada data pemesanan yang dikirim ke mana pun — ringkasan hanya dibuat di browser Anda.
+  </div>
+</footer>
+
+<script>
+/* ================= DATA ================= */
+var VARIANTS = [
+  { name: "1.5 G HV CVT",        price: 399000000, sample: false },
+  { name: "1.5 G HV CVT TSS",    price: 419000000, sample: true  },
+  { name: "1.5 S HV CVT",        price: 430000000, sample: false },
+  { name: "1.5 S HV CVT TSS",    price: 448800000, sample: false },
+  { name: "1.5 G GR HV CVT",     price: 438000000, sample: true  },
+  { name: "1.5 S GR HV CVT",     price: 452000000, sample: true  },
+  { name: "1.5 S GR HV CVT TSS", price: 469000000, sample: true  }
+];
+
+var GALLERY = [
+  "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=80"
+];
+
+/* ================= HELPERS ================= */
+function fmtRp(n){ return "Rp" + n.toLocaleString("id-ID"); }
+
+/* ================= VARIANTS ================= */
+var selectedVariant = 0;
+
+function renderVariants(){
+  var grid = document.getElementById("variantGrid");
+  grid.innerHTML = "";
+  VARIANTS.forEach(function(v, i){
+    var card = document.createElement("div");
+    card.className = "var-card" + (i === selectedVariant ? " selected" : "");
+    card.innerHTML =
+      "<h3>" + v.name + "</h3>" +
+      "<div class='price-tag'>" + fmtRp(v.price) + "</div>" +
+      (v.sample ? "<span class='tag'>Harga Contoh</span>" : "") +
+      "<p>OTR Jakarta • Hybrid EV</p>";
+    card.onclick = function(){ selectVariant(i); };
+    grid.appendChild(card);
+  });
+  // isi dropdown simulasi & pemesanan
+  ["simVariant","fVariant"].forEach(function(id){
+    var sel = document.getElementById(id);
+    sel.innerHTML = "";
+    VARIANTS.forEach(function(v, i){
+      var o = document.createElement("option");
+      o.value = i;
+      o.textContent = v.name + " — " + fmtRp(v.price);
+      sel.appendChild(o);
+    });
+    sel.value = selectedVariant;
+  });
+}
+
+function selectVariant(i){
+  selectedVariant = i;
+  document.getElementById("simVariant").value = i;
+  document.getElementById("fVariant").value = i;
+  renderVariants();
+  calcSim();
+}
+
+/* ================= SPECS TABS ================= */
+function showTab(name, btn){
+  document.querySelectorAll(".tabs button").forEach(function(b){ b.classList.remove("active"); });
+  btn.classList.add("active");
+  document.querySelectorAll(".spec-panel").forEach(function(p){ p.classList.remove("active"); });
+  document.getElementById("tab-" + name).classList.add("active");
+}
+
+/* ================= SIMULASI KREDIT ================= */
+function calcSim(){
+  var v = VARIANTS[selectedVariant];
+  var price = v.price;
+  var dpPct = parseFloat(document.getElementById("simDp").value);
+  var tenor = parseInt(document.getElementById("simTenor").value, 10);
+  var rate = parseFloat(document.getElementById("simRate").value);
+  var dp = Math.round(price * dpPct / 100);
+  var loan = price - dp;
+  var years = tenor / 12;
+  var interest = Math.round(loan * rate / 100 * years);
+  var monthly = Math.round((loan + interest) / tenor);
+  document.getElementById("dpLabel").textContent = dpPct + "%";
+  document.getElementById("rateLabel").textContent = rate + "% / tahun";
+  document.getElementById("rPrice").textContent = fmtRp(price);
+  document.getElementById("rDp").textContent = fmtRp(dp);
+  document.getElementById("rLoan").textContent = fmtRp(loan);
+  document.getElementById("rInterest").textContent = fmtRp(interest);
+  document.getElementById("rTenor").textContent = tenor + " bulan";
+  document.getElementById("rMonthly").textContent = fmtRp(monthly) + " / bln";
+}
+
+["simDp","simTenor","simRate"].forEach(function(id){
+  document.getElementById(id).addEventListener("input", calcSim);
+});
+document.getElementById("simVariant").addEventListener("change", function(){
+  selectVariant(parseInt(this.value, 10));
+});
+
+/* ================= ORDER FORM ================= */
+function submitOrder(e){
+  e.preventDefault();
+  var v = VARIANTS[parseInt(document.getElementById("fVariant").value, 10)];
+  var name = document.getElementById("fName").value.trim();
+  var phone = document.getElementById("fPhone").value.trim();
+  var city = document.getElementById("fCity").value.trim();
+  var text =
+    "RINGKASAN PEMESANAN — ALL NEW YARIS CROSS HEV\n" +
+    "Nama: " + name + "\n" +
+    "Telepon: " + phone + "\n" +
+    "Kota: " + city + "\n" +
+    "Varian: " + v.name + "\n" +
+    "Harga OTR Jakarta: " + fmtRp(v.price) + (v.sample ? " (harga contoh)" : "") + "\n" +
+    "Estimasi angsuran (DP 30%, tenor 60 bln, bunga flat 5%/thn): " +
+    fmtRp(Math.round(((v.price * 0.7) + (v.price * 0.7) * 0.05 * 5) / 60)) + " / bln";
+  var box = document.getElementById("orderSummary");
+  box.textContent = text;
+  box.classList.add("show");
+  document.getElementById("copyBtn").style.display = "inline-block";
+  return false;
+}
+
+function copySummary(){
+  var text = document.getElementById("orderSummary").textContent;
+  function done(btn){ btn.textContent = "Tersalin ✓"; setTimeout(function(){ btn.textContent = "Salin Ringkasan"; }, 2000); }
+  var btn = document.getElementById("copyBtn");
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function(){ done(btn); }).catch(function(){ fallbackCopy(text); done(btn); });
+  } else { fallbackCopy(text); done(btn); }
+}
+function fallbackCopy(text){
+  var ta = document.createElement("textarea");
+  ta.value = text;
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand("copy"); } catch(e) {}
+  document.body.removeChild(ta);
+}
+
+/* ================= GALLERY / LIGHTBOX ================= */
+function renderGallery(){
+  var grid = document.getElementById("galGrid");
+  GALLERY.forEach(function(src){
+    var d = document.createElement("div");
+    d.className = "ph";
+    var img = document.createElement("img");
+    img.src = src;
+    img.alt = "Galeri Yaris Cross";
+    img.loading = "lazy";
+    img.onerror = function(){ this.style.display = "none"; };
+    img.onclick = function(){ openLightbox(src); };
+    d.appendChild(img);
+    grid.appendChild(d);
+  });
+}
+function openLightbox(src){
+  document.getElementById("lightboxImg").src = src;
+  document.getElementById("lightbox").classList.add("show");
+}
+function closeLightbox(){
+  document.getElementById("lightbox").classList.remove("show");
+}
+document.addEventListener("keydown", function(e){
+  if (e.key === "Escape") closeLightbox();
+});
+
+/* ================= INIT ================= */
+renderVariants();
+renderGallery();
+calcSim();
+</script>
+</body>
+</html>
